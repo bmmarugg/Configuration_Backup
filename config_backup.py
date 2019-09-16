@@ -48,12 +48,12 @@ def main():
                 connect.enable()
             print("Now connected to: {}".format(device))
             device_config = open("path/to/config/repo/{}_{}-running_config.txt".format(today, device), 'w')
-    
+
             connect.send_command("term len 0")
             run_config = connect.send_command("sh run")
             device_config.write(run_config)
-            config_log.write("Running-config for: {} pulled successfully.".format(device))
-    
+            config_log.write("Successfully pulled running config for: {}".format(device))
+
         except:
             print("Could not connect to {}. Moving on...".format(device))
             config_log.write("Could NOT pull running-config for: {}. Check device connectivity or enable password"
